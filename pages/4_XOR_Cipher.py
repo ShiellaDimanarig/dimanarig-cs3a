@@ -20,7 +20,7 @@ def xor_decrypt(ciphertext, key):
     return xor_encrypt(ciphertext, key)
 
 plaintext = bytes(st.text_area("Plain Text:").encode())
-key = bytes(st.input("Key:").encode())
+key = bytes(st.text_input("Key:").encode())
 
 if st.button("Submit"):
     if not (1 < len(plaintext) >= len(key) >= 1):
