@@ -5,3 +5,5 @@ st.header("XOR Cipher")
 st.text_area("Plain Text:")
 
 st.text_input("Key:")
+
+st.write()
