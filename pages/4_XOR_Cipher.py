@@ -1,17 +1,21 @@
 import streamlit as st
 
 st.header("XOR Cipher")
-def xor_encrypt(plaintext, key):
-    """Encrypts plaintext using XOR cipher with the given key, printing bits involved."""
 
-    ciphertext = bytearray()
-    for i in range(len(plaintext)):
-        ciphertext.append(plaintext[i] ^ key [i % len (key)])
-        st.write(f"Plaintext byte: {plaintext[i]:08b} = {chr (plaintext[i])}")
-        st.write(f"Key byte:       {key[i % len(key)]:08b} = {chr(key[i % len(key)])}")
-        st.write(f"XOR result:     {ciphertext[-1]:08b} = {chr(ciphertext[-1])}")
-        st.write("--------------------")
-    return ciphertext
+plaintext = st.text_area("Plain Text:")
+
+key = st.text_input("Key:")
+
+if st.button("submit"):
+    def xor_encrypt(plaintext, key):
+        ciphertext = bytearray()
+        for i in range(len(plaintext)):
+            ciphertext.append(plaintext[i] ^ key [i % len (key)])
+            st.write(f"Plaintext byte: {plaintext[i]:08b} = {chr (plaintext[i])}")
+            st.write(f"Key byte:       {key[i % len(key)]:08b} = {chr(key[i % len(key)])}")
+            st.write(f"XOR result:     {ciphertext[-1]:08b} = {chr(ciphertext[-1])}")
+            st.write("--------------------")
+        return ciphertext
     
     
 
@@ -37,10 +41,4 @@ else:
     decrypted = xor_decrypt(ciphertext, key)
     st.write("Decrypted:",decrypted.decode())
     
-
-plaintext = st.text_area("Plain Text:")
-
-key = st.text_input("Key:")
-
-if st.button("submit"):
     st.write(plaintext)
